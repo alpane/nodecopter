@@ -1,7 +1,10 @@
 var express = require('express');
 var app = express();
 
-var drone = require('ar-drone')(app);
-app.set('drone', drone);
+require('./drone/Drone.js')();
 
-module.exports = app;
+var port = (process.env.PORT || 5000);
+app.set('port', port);
+app.listen(port, function () {
+    console.log('App is running on port ' + port);
+});
