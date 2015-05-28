@@ -3,7 +3,9 @@ module.exports = function () {
 
     var droneClient = arDrone.createClient();
 
-    droneClient.takeOff();
+    droneClient.on('navdata', console.log);
+
+    droneClient.takeoff();
 
     droneClient.after(5000, function () {
         this.clockwise(0.5);
